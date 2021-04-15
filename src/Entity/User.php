@@ -19,14 +19,41 @@ class User implements UserInterface
     private $id;
 
     /**
+     * @var string $type
+     *
+     * @ORM\Column(name="first_name", type="string", length=128, nullable=true)
+     */
+    protected $firstName;
+
+    /**
+     * @var string $type
+     *
+     * @ORM\Column(name="last_name", type="string", length=128, nullable=true)
+     */
+    protected $lastName;
+
+    /**
      * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
+
 
     /**
      * @ORM\Column(type="json")
      */
     private $roles = [];
+
+
+    /**
+     * The Orders for the user
+     *
+     * @ORM\OneToMany(
+     *   targetEntity="Orders",
+     *   mappedBy="user",
+     *   cascade={"persist", "remove"})
+     * @ORM\OrderBy({"name" = "ASC"})
+     */
+    protected $orders;
 
     /**
      * @var string The hashed password
@@ -114,4 +141,55 @@ class User implements UserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+
+    /**
+     * @return string
+     */
+    public function getFirstName(): string
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * @param string $firstName
+     */
+    public function setFirstName(string $firstName): void
+    {
+        $this->firstName = $firstName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastName(): string
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @param string $lastName
+     */
+    public function setLastName(string $lastName): void
+    {
+        $this->lastName = $lastName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOrders()
+    {
+        return $this->orders;
+    }
+
+    /**
+     * @param mixed $orders
+     */
+    public function setOrders($orders): void
+    {
+        $this->orders = $orders;
+    }
+
+
+
 }

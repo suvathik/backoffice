@@ -26,12 +26,9 @@ final class UserProvider implements UserProviderInterface
         $user = $this->findOneUserBy(['email' => $email]);
 
         if (!$user) {
-//            throw new UsernameNotFoundException(
-//                sprintf(
-//                    'User with "%s" email does not exist.',
-//                    $email
-//                )
-//            );
+            throw new UsernameNotFoundException(
+                sprintf('User with "%s" email does not exist.', $email)
+            );
         }
 
         return $user;
@@ -49,10 +46,10 @@ final class UserProvider implements UserProviderInterface
         assert($user instanceof User);
 
         if (null === $reloadedUser = $this->findOneUserBy(['id' => $user->getId()])) {
-//            throw new UsernameNotFoundException(sprintf(
-//                'User with ID "%s" could not be reloaded.',
-//                $user->getId()
-//            ));
+            throw new UsernameNotFoundException(sprintf(
+                'User with ID "%s" could not be reloaded.',
+                $user->getId()
+            ));
         }
 
         return $reloadedUser;

@@ -124,6 +124,8 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/sonata-project/doctrine-extensions" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/sonata-project/cache" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/web-server-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/data-fixtures" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
